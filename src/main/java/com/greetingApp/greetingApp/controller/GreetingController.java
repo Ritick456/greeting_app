@@ -1,6 +1,8 @@
 package com.greetingApp.greetingApp.controller;
 
 
+import com.greetingApp.greetingApp.services.GreetingService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -10,12 +12,15 @@ import java.util.Map;
 @RequestMapping("/greeting")
 public class GreetingController {
 
+    @Autowired
+    private  GreetingService greetingService ;
+
     @GetMapping
     public Map<String , String> getGreeting(){
 
         Map<String , String> response = new HashMap<>();
         response.put("method" , "get");
-        response.put("message" , "Hello from get method");
+        response.put("message" , greetingService.getGreeting());
         return response;
 
     }
