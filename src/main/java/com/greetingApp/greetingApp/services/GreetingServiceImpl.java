@@ -5,6 +5,7 @@ import com.greetingApp.greetingApp.repository.GreetingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -36,5 +37,9 @@ public class GreetingServiceImpl implements GreetingService {
 
     public Optional<Greeting> findGreetingbyId(Long id){
         return greetingRepository.findById(id);
+    }
+
+    public List<Greeting> findAllGreeting(){
+        return greetingRepository.findAll();
     }
 }

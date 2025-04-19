@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -39,6 +40,12 @@ public class GreetingController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("Greeting not found with ID: " + id);
         }
+    }
+
+    @GetMapping("/findall")
+    public List<Greeting> findAllGreet(){
+        List<Greeting> list = greetingService.findAllGreeting();
+        return list;
     }
 
     @PostMapping
