@@ -42,4 +42,16 @@ public class GreetingServiceImpl implements GreetingService {
     public List<Greeting> findAllGreeting(){
         return greetingRepository.findAll();
     }
+
+    public Greeting updateGreetingMessage(Long id, String newMessage) {
+        // Step 1: Find the existing greeting
+        Greeting greeting = greetingRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Greeting not found with id: " + id));
+
+       greeting.setMessage(newMessage);
+
+       return greetingRepository.save(greeting);
+    }
+
+
 }

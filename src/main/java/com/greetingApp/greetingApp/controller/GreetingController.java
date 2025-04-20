@@ -2,6 +2,7 @@ package com.greetingApp.greetingApp.controller;
 
 
 import com.greetingApp.greetingApp.Entity.Greeting;
+import com.greetingApp.greetingApp.dto.GreetingRequest;
 import com.greetingApp.greetingApp.services.GreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,6 +28,15 @@ public class GreetingController {
         response.put("method" , "get");
         response.put("message" , greetingService.getGreeting(firstName , lastName));
         return response;
+
+    }
+
+    @PutMapping("/update/{id}")
+    public Greeting updateGreeting(@PathVariable Long id, @RequestBody GreetingRequest newMessage){
+
+        String updateMessage = newMessage.getMessage();
+
+        return  greetingService.updateGreetingMessage(id , updateMessage);
 
     }
 

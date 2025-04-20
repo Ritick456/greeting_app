@@ -15,4 +15,6 @@ public interface GreetingService {
 
     List<Greeting> findAllGreeting();
 
+    Greeting updateGreetingMessage(Long id , String newMessage);
+
 }
