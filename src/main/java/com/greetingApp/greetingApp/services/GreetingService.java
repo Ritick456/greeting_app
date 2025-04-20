@@ -17,4 +17,6 @@ public interface GreetingService {
 
     Greeting updateGreetingMessage(Long id , String newMessage);
 
+    void deleteGreeting(Long id);
+
 }

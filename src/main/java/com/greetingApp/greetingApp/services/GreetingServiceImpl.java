@@ -53,5 +53,15 @@ public class GreetingServiceImpl implements GreetingService {
        return greetingRepository.save(greeting);
     }
 
+    public void deleteGreeting(Long id){
+
+        if(!greetingRepository.existsById(id)){
+            throw new IllegalArgumentException("Greeting not found with id " + id);
+        }
+
+        greetingRepository.deleteById(id);
+
+    }
+
 
 }

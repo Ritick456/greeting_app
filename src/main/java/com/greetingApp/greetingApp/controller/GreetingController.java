@@ -88,6 +88,17 @@ public class GreetingController {
 
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteGreeting(@PathVariable Long id){
+        try{
+            greetingService.deleteGreeting(id);
+            return ResponseEntity.ok("Greeting with Id " + id + " deleted successfully. ");
+        }
+        catch (IllegalArgumentException ex){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+        }
+    }
+
 
 
 }
